@@ -1,4 +1,5 @@
+;; -*- mode: scheme; -*-
+
 (channel
   (version 0)
-  (directory "channel-5")
   (url "https://codeberg.com/nshan651/channel-5"))
