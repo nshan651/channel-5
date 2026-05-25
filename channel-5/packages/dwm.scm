@@ -41,4 +41,4 @@
     (description
      "dwm is a dynamic window manager for X. This is a custom build from
 codeberg.org/nshan651/dwm.")
-    (license license:mit)))
+    (license license:expat)))
