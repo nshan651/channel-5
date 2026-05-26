@@ -1,7 +1,7 @@
 (define-module (channel-5 packages dwm)
   #:use-module (guix packages)
   #:use-module (guix gexp)
-  #:use-module (guix git-download)
+  #:use-module (guix download)
   #:use-module (guix build-system gnu)
   #:use-module ((guix licenses) #:prefix license:)
   #:use-module (gnu packages pkg-config)
@@ -13,13 +13,10 @@
     (version "1.0")
     (source
      (origin
-       (method git-fetch)
-       (uri (git-reference
-             (url "https://codeberg.org/nshan651/dwm.git")
-             (commit "ef4adc102fb1a1d0d416764e9885dae978f966ea")))
-       (file-name (git-file-name name version))
+       (method url-fetch)
+       (uri "https://codeberg.org/nshan651/dwm/archive/ef4adc102fb1a1d0d416764e9885dae978f966ea.tar.gz")
        (sha256
-        (base32 "1xxva5wxpdiac3jc26yvh7bx945wjkm32mav8pr4xqxlv40zrgsc"))))
+        (base32 "0000000000000000000000000000000000000000000000000000"))))
     (build-system gnu-build-system)
     (arguments
      (list
