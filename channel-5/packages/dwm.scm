@@ -16,25 +16,21 @@
        (method git-fetch)
        (uri (git-reference
              (url "https://codeberg.org/nshan651/dwm.git")
-             (commit "main")))
+             (commit "ef4adc102fb1a1d0d416764e9885dae978f966ea")))
        (file-name (git-file-name name version))
        (sha256
-        (base32 "1zhjxa8i5ljxfk7cgk7vyhvpimqdy0n3b60igh8xp492vjgafaq8"))))
+        (base32 "1xxva5wxpdiac3jc26yvh7bx945wjkm32mav8pr4xqxlv40zrgsc"))))
     (build-system gnu-build-system)
     (arguments
      (list
       #:tests? #f
       #:make-flags
-      #~(list (string-append "CC=gcc")
-              (string-append "PREFIX=" #$output))
+      #~(list (string-append "PREFIX=" #$output))
       #:phases
       #~(modify-phases %standard-phases
-          (delete 'configure)
-          (replace 'install
-            (lambda _
-              (invoke "make" "install"))))))
+          (delete 'configure))))
     (inputs
-     (list libx11 libxft libxinerama))
+     (list libx11 libxft libxinerama libxcb))
     (native-inputs
      (list pkg-config))
     (home-page "https://codeberg.org/nshan651/dwm")
