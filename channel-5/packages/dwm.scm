@@ -22,7 +22,7 @@
      (list
       #:tests? #f
       #:make-flags
-      #~(list (string-append "PREFIX=" #$output))
+      #~(list (string-append "PREFIX=" #$output) "CC=gcc")
       #:phases
       #~(modify-phases %standard-phases
           (delete 'configure))))
