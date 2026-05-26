@@ -17,7 +17,7 @@
        (method url-fetch)
        (uri "https://codeberg.org/nshan651/dwm/archive/e3a613de419f8e19f357e404427b74b443f663e5.tar.gz")
        (sha256
-        (base32 "13phkdv71qhn01lvizip068lmxr7jvpa42pkj3jwm2lyw1xk9cdw"))))
+        (base32 "1hibhcwccvvqv0i8nyw0pslvbrv23mrfi0spad31g4bn62390g8j"))))
     (build-system gnu-build-system)
     (arguments
      (list
