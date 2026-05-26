@@ -5,6 +5,7 @@
   #:use-module (guix build-system gnu)
   #:use-module ((guix licenses) #:prefix license:)
   #:use-module (gnu packages pkg-config)
+  #:use-module (gnu packages fontutils)
   #:use-module (gnu packages xorg))
 
 (define-public dwm
@@ -22,12 +23,16 @@
      (list
       #:tests? #f
       #:make-flags
-      #~(list (string-append "PREFIX=" #$output) "CC=gcc")
+      #~(list (string-append "PREFIX=" #$output)
+              "CC=gcc"
+              (string-append "FREETYPEINC=" #$(this-package-input "freetype") "/include/freetype2"
+                             )
+              )
       #:phases
       #~(modify-phases %standard-phases
           (delete 'configure))))
     (inputs
-     (list libx11 libxft libxinerama libxcb))
+     (list libx11 libxft libxinerama libxcb freetype))
     (native-inputs
      (list pkg-config))
     (home-page "https://codeberg.org/nshan651/dwm")
