@@ -1,3 +1,4 @@
+;;  guix build -L ~/git/channel-5 clefd
 (define-module (channel-5 packages clefd)
   #:use-module (channel-5 packages clefd-crates)
   #:use-module ((guix licenses) #:prefix license:)
@@ -20,11 +21,11 @@
        (method git-fetch)
        (uri (git-reference
              (url "https://github.com/nshan651/clefd")
-             (commit "a2f13f504b4073c417fb5a0a2de7e090c2c2bec0")))
+             (commit "d048704404af59c9af0be54f4020bc04ec190a92")))
        (file-name (git-file-name name version))
        (sha256
         (base32
-         "0j0lscrqljsqp9qkmwxcap7qmxf242rgxlml3mqqdybfnkjz2mxd"))))
+         "03rkjn7qnns0kplan1qvj8d5fmknninny8cr4svsg210hfwpb8bq"))))
     ;; (source
     ;;  (git-checkout
     ;;   (url (string-append (getenv "HOME") "/git/clefd/main"))))
