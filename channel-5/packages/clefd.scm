@@ -1,4 +1,3 @@
-;;  guix build -L ~/git/channel-5 clefd
 (define-module (channel-5 packages clefd)
   #:use-module (channel-5 packages clefd-crates)
   #:use-module ((guix licenses) #:prefix license:)
