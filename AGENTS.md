@@ -18,6 +18,7 @@ guix build -L ~/git/channel-5 clefd
 guix build -L ~/git/channel-5 st
 guix build -L ~/git/channel-5 dwm
 guix build -L ~/git/channel-5 nomad
+guix build -L ~/git/channel-5 opencode
 ```
 
 `-L` goes before the package name and must point to the repo root — the directory containing `.guix-channel` — not the inner `channel-5/` module directory. The rest of the load path still comes from the pulled channel, so only modules defined here resolve locally.
@@ -27,5 +28,6 @@ guix build -L ~/git/channel-5 nomad
 - `sha256` base32 hashes must be exact. Most of this repo's commit history is churn from `Hash mismatch.` → `Fixed hash.` cycles; prefer re-generating the hash (`guix hash -rx` on a fresh checkout, or `guix download` for tarball origins) before committing a bumped origin.
 - Sources pin exact upstream commits/tags — both the pinned commit and the sha256 must change together in a single edit. Tarball origins (`dwm`, `st`) embed the commit id in the URL; update both URL and base32.
 - Custom-built packages not in Guix upstream use `#:tests? #f`. That's deliberate for `st`, `dwm`, `clefd` (and `nomad`); it is not an invitation to add a test phase unless the upstream build supports it.
+- `opencode` packages the v2 per-platform npm artifact (`@opencode/cli-linux-x64`, a Bun single-file executable built from the matching git tag; upstream is https://github.com/anomalyco/opencode, formerly sst/opencode, and Bun isn't packaged in Guix, so no source build). Bump it by changing `version` + the sha256 together (regenerate with `guix download` on the registry tarball URL). Keep `#:strip-binaries? #f` (stripping corrupts the Bun payload) and `#:validate-runpath? #f` (the loader is found via the patched ELF interpreter). It declares `x86_64-linux` only; other targets live in parallel `@opencode/cli-<target>` npm packages.
 - The `prefix license:` import and `license:expat` for personal packages is convention here (history records a `mit → expat` correction).
 - Generated `clefd-crates.scm` entries carry `;; TODO REVIEW: Check bundled sources.` markers on vendored-sys crates — leaving them is fine for now, but regenerate/readjust the whole block after any Cargo.toml change upstream.
